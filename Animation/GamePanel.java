@@ -3,6 +3,15 @@ import java.awt.*;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import Sprites.*;
+import java.util.Iterator;
+import java.awt.event.*;
+import java.util.Random;
+import java.util.ArrayList;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 /**
  * A GamePanel
@@ -29,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable
     public GamePanel()
     {
         //
+        //addKeyListener(new TAdapter());
         this.b = new Background(0,0,"Resources/Swords.png",0,0,0,5);
     }
     
