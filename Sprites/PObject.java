@@ -28,7 +28,8 @@ public class PObject extends Sprite
      */
     public PObject(String s,double x,double y, double xgrav, double ygrav, double xm, double ym,double scale)
     {
-        super(s,x,y,scale);
+        super();
+        update(s,x,y,scale);
         this.xgrav = xgrav;
         this.ygrav = ygrav;
         this.xm = xm;

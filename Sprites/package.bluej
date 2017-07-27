@@ -1,15 +1,21 @@
 #BlueJ package file
+dependency1.from=Player
+dependency1.to=HitBox
+dependency1.type=UsesDependency
+dependency2.from=Enemy
+dependency2.to=HitBox
+dependency2.type=UsesDependency
 objectbench.height=92
-objectbench.width=742
-package.divider.horizontal=0.5564635958395245
+objectbench.width=801
+package.divider.horizontal=0.600297176820208
 package.divider.vertical=0.840064620355412
 package.editor.height=513
 package.editor.width=1236
-package.editor.x=-9
-package.editor.y=-9
+package.editor.x=100
+package.editor.y=100
 package.frame.height=738
 package.frame.width=1384
-package.numDependencies=0
+package.numDependencies=2
 package.numTargets=7
 package.showExtends=true
 package.showUses=true

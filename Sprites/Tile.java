@@ -20,7 +20,8 @@ public class Tile extends Sprite
     public Tile(String s,double x, double y, int xscreen, int yscreen,double scale)
     {
         // initialise instance variables
-        super(s,x,y,scale);
+        super();
+        update(s,x,y,scale);
         this.xscreen = xscreen;
         this.yscreen = yscreen;
     }
