@@ -23,21 +23,37 @@ public abstract class Sprite
     /**
      * Constructor for objects of class Sprite
      */
-    public Sprite(String URL,double x,double y, double scale)
+    public Sprite()
+    {
+        this.visible = true;
+    }
+    
+    public void update(String URL,double x,double y, double scale)
     {
         // initialise instance variables
         this.scale = scale;
         this.x = x;
         this.y = y;
-        URL imgURL = getClass().getClassLoader().getResource(URL);
-        ImageIcon icon = null;
-        if(imgURL != null)
-        {
-            icon = new ImageIcon(imgURL);
-        } else {
-            System.err.println("Couldn't find file:" + URL);
-        }
-        this.img = icon.getImage();
+        this.img = getImgfromURL(URL);
+        visible = true;
+    }
+    
+    public void update(Image img,double x,double y, double scale)
+    {
+        // initialise instance variables
+        this.scale = scale;
+        this.x = x;
+        this.y = y;
+        this.img = img;
+        visible = true;
+    }
+    
+    public void update(double x,double y, double scale)
+    {
+        // initialise instance variables
+        this.scale = scale;
+        this.x = x;
+        this.y = y;
         visible = true;
     }
     
@@ -64,7 +80,7 @@ public abstract class Sprite
      * 
      * @param URL the URL of the image
      */
-    public void changeImg(String URL)
+    public Image getImgfromURL(String URL)
     {
         URL imgURL = getClass().getClassLoader().getResource(URL);
         ImageIcon icon = null;
@@ -74,7 +90,12 @@ public abstract class Sprite
         } else {
             System.err.println("Couldn't find file:" + URL);
         }
-        this.img = icon.getImage();
+        return icon.getImage();
+    }
+    
+    public void changeImg(String URL)
+    {
+        this.img = getImgfromURL(URL);
     }
     
     /**
@@ -101,5 +122,13 @@ public abstract class Sprite
     {
         this.x = x;
         this.y = y;
+    }
+    
+    public void draw (Graphics g, double winscale) 
+    {
+        int img_width = img.getWidth(null);
+        int img_height = img.getHeight(null);
+        g.drawImage(img, (int)x, (int)y, img_width+(int)x, img_height+(int)y,
+                    0, 0, img_width, img_height, null);
     }
 }

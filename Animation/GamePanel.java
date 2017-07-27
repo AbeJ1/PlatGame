@@ -20,6 +20,9 @@ public class GamePanel extends JPanel implements Runnable
     public static final int MENUVAL = 0;
     public static final int LEVELVAL = 1;
     public static final int WORLDVAL = 2;
+    
+    private Player playerA = new Player();
+    
     /**
      * Constructor for objects of class GamePanel
      */
@@ -74,6 +77,7 @@ public class GamePanel extends JPanel implements Runnable
         g.fillRect(0, 0, getSize().width, getSize().height);
         try{
             drawBackground(g);
+            playerA.draw(g,1);
         }
         catch(Exception e)
         {

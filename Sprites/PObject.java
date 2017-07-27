@@ -39,7 +39,6 @@ public class PObject extends Sprite
     {
         
     }
-   
     
     /**
      * this changes the image to an image found from an URL. It has to load the image

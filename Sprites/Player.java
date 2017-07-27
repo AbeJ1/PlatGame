@@ -25,10 +25,35 @@ public class Player extends Entity
     private int AnimationState;
     public static final int NORMAL_STATE = 0;
     
+    
+    
     /**
-     * The constructor for class Player
+     * Initialise all image arrays
+     */
+    
+    private void init_images()
+    {
+       IdleAn = new ArrayList<>();
+       WalkAn = new ArrayList<>();
+       AttAn = new ArrayList<>();
+       FlyAn = new ArrayList<>();
+       DieAn = new ArrayList<>();
+       
+       IdleAn.add(getImgfromURL("Resources/ASS1.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS2.png"));
+       WalkAn.add(getImgfromURL("Resources/ASS1.png"));
+       WalkAn.add(getImgfromURL("Resources/ASS2.png"));
+       AttAn.add(getImgfromURL("Resources/ASS1.png"));
+       AttAn.add(getImgfromURL("Resources/ASS2.png"));
+       FlyAn.add(getImgfromURL("Resources/ASS1.png"));
+       FlyAn.add(getImgfromURL("Resources/ASS2.png"));
+       DieAn.add(getImgfromURL("Resources/ASS1.png"));
+       DieAn.add(getImgfromURL("Resources/ASS2.png"));
+    }
+    
+    /**
+     * update params
      * 
-     * @param s the URL of the first image
      * @param x the initial x position of the player
      * @param y the initial y position of the player
      * @param xgrav the initial gravity in the x direction
@@ -41,12 +66,30 @@ public class Player extends Entity
      * @param maxym the maximum y momentum
      * @param the starting max Animation
      */
-    public Player(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, int FHP,
-    double maxxm, double maxym, int animationFull,double scale)
+    private void init_param()
     {
-        super(s,x,y, xgrav, ygrav, xm, ym, hp, FHP,maxxm,maxym,scale);
+       double x = 0.0;
+       double y = 0.0;
+       double xgrav = 1.0;
+       double ygrav = 1.0;
+       double xm = 0.0;
+       double ym = 0.0;
+       int hp = 5;
+       int FHP = 10;
+       double maxxm = 10.0;
+       double maxym = 10.0;
+       double scale = 5.0;
+       update(x,y, xgrav, ygrav, xm, ym, hp, FHP,maxxm,maxym,scale); 
+    }
+    
+    public Player()
+    {
+        super();
+        init_param();
+        init_images();
         animationTimer = 0;
         this.animationFull = animationFull;
+        this.img = IdleAn.get(0);
         this.HB = new HitBox(x,y,img.getWidth(null),img.getHeight(null));
         this.AnimationState = 0;
     }
@@ -92,6 +135,7 @@ public class Player extends Entity
     }
 
     public void keyReleased(KeyEvent e) {
-
+        int key = e.getKeyCode();
+        
     }
 }

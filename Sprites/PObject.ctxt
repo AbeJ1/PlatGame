@@ -1,15 +1,15 @@
 #BlueJ class context
 comment0.target=PObject
-comment0.text=\r\n\ This\ is\ a\ sprite\ with\ physics\r\n\ \r\n\ @author\ Comerstar\ \r\n\ @version\ v0.1\r\n
+comment0.text=\n\ This\ is\ a\ sprite\ with\ physics\n\ \n\ @author\ Comerstar\ \n\ @version\ v0.1\n
 comment1.params=s\ x\ y\ xgrav\ ygrav\ xm\ ym\ scale
 comment1.target=PObject(java.lang.String,\ double,\ double,\ double,\ double,\ double,\ double,\ double)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Object\r\n\ \r\n\ @param\ s\ the\ Path\ of\ the\ image\ the\ PObject\ will\ be\r\n\ @param\ x\ the\ x\ location\ of\ the\ PObject\r\n\ @param\ y\ the\ y\ location\ of\ the\ PObject\r\n\ @param\ xgrav\ is\ the\ gravity\ vector\ in\ the\ x\ direction\r\n\ @param\ ygrav\ is\ the\ gravity\ vector\ in\ the\ y\ direction\r\n\ @param\ \r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Object\n\ \n\ @param\ s\ the\ Path\ of\ the\ image\ the\ PObject\ will\ be\n\ @param\ x\ the\ x\ location\ of\ the\ PObject\n\ @param\ y\ the\ y\ location\ of\ the\ PObject\n\ @param\ xgrav\ is\ the\ gravity\ vector\ in\ the\ x\ direction\n\ @param\ ygrav\ is\ the\ gravity\ vector\ in\ the\ y\ direction\n\ @param\ \n
 comment2.params=
 comment2.target=void\ die()
 comment3.params=URL
 comment3.target=void\ changeImage(java.lang.String)
-comment3.text=\r\n\ this\ changes\ the\ image\ to\ an\ image\ found\ from\ an\ URL.\ It\ has\ to\ load\ the\ image\r\n\ \r\n\ @param\ URL\ this\ is\ the\ path\ to\ the\ image\r\n
+comment3.text=\n\ this\ changes\ the\ image\ to\ an\ image\ found\ from\ an\ URL.\ It\ has\ to\ load\ the\ image\n\ \n\ @param\ URL\ this\ is\ the\ path\ to\ the\ image\n
 comment4.params=img
 comment4.target=void\ changeImage(java.awt.Image)
-comment4.text=\r\n\ this\ changes\ the\ image\ to\ an\ image\ that\ is\ already\ loaded\r\n\ \r\n\ @param\ img\ this\ is\ the\ image\r\n
+comment4.text=\n\ this\ changes\ the\ image\ to\ an\ image\ that\ is\ already\ loaded\n\ \n\ @param\ img\ this\ is\ the\ image\n
 numComments=5

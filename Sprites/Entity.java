@@ -13,14 +13,40 @@ public class Entity extends Sprite
     protected int health;
     protected int fullHP;
     protected PhysicsEngine Physics;
+    
+    public Entity()
+    {
+        super();
+    }
+    
     /**
      * Constructor for objects of class Entity
      */
-    public Entity(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
+    public void update(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
     int FHP,double maxxm,double maxym, double scale)
     {
         // initialise instance variables
-        super(s,x,y,scale);
+        update(s,x,y,scale);
+        health = hp;
+        fullHP = FHP;
+        Physics = new PhysicsEngine(x,y,xgrav,ygrav,xm,ym,maxxm,maxym);
+    }
+    
+    public void update(Image img,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
+    int FHP,double maxxm,double maxym, double scale)
+    {
+        // initialise instance variables
+        update(img,x,y,scale);
+        health = hp;
+        fullHP = FHP;
+        Physics = new PhysicsEngine(x,y,xgrav,ygrav,xm,ym,maxxm,maxym);
+    }
+    
+    public void update(double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
+    int FHP,double maxxm,double maxym, double scale)
+    {
+        // initialise instance variables
+        update(x,y,scale);
         health = hp;
         fullHP = FHP;
         Physics = new PhysicsEngine(x,y,xgrav,ygrav,xm,ym,maxxm,maxym);
