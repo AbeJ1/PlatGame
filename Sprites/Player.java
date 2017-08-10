@@ -131,11 +131,17 @@ public class Player extends Entity
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            this.Physics.addtoXM(-2.0);
+            //this.Physics.addtoXM(-2.0);
+            this.x += 5;
+            System.out.println("LEFT");
+            System.out.println(this.x);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            this.Physics.addtoXM(2.0);
+            //this.Physics.addtoXM(2.0);
+            this.x -= 5;
+            System.out.println("RIGHT");
+            System.out.println(this.x);
         }
     }
 

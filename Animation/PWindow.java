@@ -42,15 +42,11 @@ public class PWindow extends JFrame
      */
     public static void main(String[] args) {
         
-        EventQueue.invokeLater(new Runnable() 
-        {
-            
-            @Override
-            public void run() {                
-                JFrame ex = new PWindow();
+        EventQueue.invokeLater(() ->
+            {           
+                PWindow ex = new PWindow();
                 ex.setVisible(true);                
             }
-        }
         );
     }
 }

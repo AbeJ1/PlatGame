@@ -10,6 +10,4 @@ comment2.text=\n\ Initializes\ the\ settings\ for\ the\ window\n
 comment3.params=args
 comment3.target=void\ main(java.lang.String[])
 comment3.text=\n\ Creates\ a\ window\ and\ ensures\ it\ is\ visible\n
-comment4.params=
-comment4.target=void\ run()
-numComments=5
+numComments=4
