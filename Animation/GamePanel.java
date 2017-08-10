@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable
         addKeyListener(new TAdapter());
         setFocusable(true);
         this.b = new Background(0,0,"Resources/Swords.png",0,0,0,5);
-        //run();
+        gameInit();
     }
     
     public void gameInit() {
@@ -83,16 +83,11 @@ public class GamePanel extends JPanel implements Runnable
             } catch (InterruptedException e) {
                 System.out.println("interrupted");
             }
+            System.out.println("Continued");
             repaint();
             beforeTime = System.currentTimeMillis();
-            while (state == 0)
-            {
-                
-            }
-            while (state == 1)
-            {
-                
-            }
+            playerA.increaseAT();
+            playerA.setAnimationImage();
         }
         
     }
