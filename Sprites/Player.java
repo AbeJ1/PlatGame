@@ -90,7 +90,7 @@ public class Player extends Entity
         animationTimer = 0;
         this.animationFull = animationFull;
         this.img = IdleAn.get(0);
-        this.HB = new HitBox(x,y,img.getWidth(null),img.getHeight(null));
+        this.HB = new HitBox(new double[] {});
         this.AnimationState = 0;
     }
     
@@ -114,6 +114,11 @@ public class Player extends Entity
         this.state = State;
     }
     
+    /**
+     * sets the state of the player
+     * 
+     * @param State the new State
+     */
     public void setAnimationState(int State)
     {
         this.AnimationState = State;

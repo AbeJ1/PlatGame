@@ -17,6 +17,7 @@ comment5.target=void\ setState(int)
 comment5.text=\r\n\ this\ changes\ the\ state\ of\ the\ player\r\n\ \r\n\ @param\ state\ the\ new\ player\ state\r\n
 comment6.params=State
 comment6.target=void\ setAnimationState(int)
+comment6.text=\r\n\ sets\ the\ state\ of\ the\ player\r\n\ \r\n\ @param\ State\ the\ new\ State\r\n
 comment7.params=e
 comment7.target=void\ keyPressed(java.awt.event.KeyEvent)
 comment7.text=\r\n\ occurs\ when\ a\ key\ is\ pressed\ and\ moves\ the\ player\r\n
