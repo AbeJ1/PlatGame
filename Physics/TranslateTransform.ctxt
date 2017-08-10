@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=TranslateTransform
+comment0.text=\r\n\ Has\ a\ function\ to\ transform\ shapes\r\n\r\n\ @author\ the\ Comerstar\r\n\ @version\ v1\r\n
+comment1.params=
+comment1.target=TranslateTransform()
+comment2.params=ptx\ pty\ movex\ movey
+comment2.target=double[]\ Translate(double,\ double,\ double,\ double)
+comment2.text=\r\n\ translates\ the\ given\ point\ by\ the\ vector\ movex,movey\r\n\ \r\n\ @param\ ptx,pty\ the\ point\ one\ wants\ to\ translate\r\n\ @param\ movex,movey,\ the\ vector\ one\ wants\ to\ translate\ the\ point\ by\r\n
+numComments=3

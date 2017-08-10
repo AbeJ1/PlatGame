@@ -121,6 +121,11 @@ public class Player extends Entity
         this.state = State;
     }
     
+    /**
+     * sets the state of the player
+     * 
+     * @param State the new State
+     */
     public void setAnimationState(int State)
     {
         this.AnimationState = State;

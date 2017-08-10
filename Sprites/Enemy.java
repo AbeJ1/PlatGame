@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.awt.*;
 
 /**
- * Write a description of class Enemy here.
+ * This is a base class for basic enemies
  *
  * @author Comerstar
  * @version v0.1

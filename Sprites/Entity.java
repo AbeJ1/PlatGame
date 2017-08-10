@@ -19,9 +19,6 @@ public class Entity extends Sprite
         super();
     }
     
-    /**
-     * Constructor for objects of class Entity
-     */
     public void update(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
     int FHP,double maxxm,double maxym, double scale)
     {
@@ -35,17 +32,30 @@ public class Entity extends Sprite
     public void update(Image img,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
     int FHP,double maxxm,double maxym, double scale)
     {
-        // initialise instance variables
         update(img,x,y,scale);
         health = hp;
         fullHP = FHP;
         Physics = new PhysicsEngine(x,y,xgrav,ygrav,xm,ym,maxxm,maxym);
     }
     
+    /**
+     * This function changes various variables related to entities
+     * 
+     * @param x the new x position
+     * @param y the new y position
+     * @param xgrav the new gravity in x
+     * @param ygrav the new gravity in y
+     * @param xm the new x momentum
+     * @param ym the new y momentum
+     * @param hp is the new health value
+     * @param FHP the maximum HP of the entity
+     * @param maxxm the maximum x momentum
+     * @param maxym the maximum y momentum
+     * @param scale how many pixels large each square is
+     */
     public void update(double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
     int FHP,double maxxm,double maxym, double scale)
     {
-        // initialise instance variables
         update(x,y,scale);
         health = hp;
         fullHP = FHP;

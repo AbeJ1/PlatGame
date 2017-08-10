@@ -1,0 +1,16 @@
+matrix
+{{{Image(null if imageless),{Hitbox}(null if empty tile)(won't create tile if hitbox, spawn and image are null),{direction vector},tile type(sand ice lava etc.)},
+{{Image(null if imageless),{Hitbox}(null if empty tile),{direction vector}(null if no hitbox),{Image(null if imageless),{Hitbox}(null if empty tile),{direction vector}}
+(putting two tiles creates a tile with two hitboxes)},{{Image(null if imageless),{Hitbox}(null if empty tile),{direction vector}(null if no hitbox),spawn object or tile type}}}
+
+enemies to load
+{enemies types}
+
+images to load
+{list of used images}
+
+background
+{background files, scroll}
+
+BC
+{Background Colour}

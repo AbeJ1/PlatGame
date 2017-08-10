@@ -3,10 +3,10 @@ import java.lang.*;
 
 
 /**
- * Write a description of class RotationTransform here.
+ * contains funtions to rotate points
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Ancient Wisdom
+ * @version v1
  */
 
 
@@ -21,9 +21,12 @@ public class RotationTransform
     }
 
     /**
-     * (x0,y0) is the vector of the original perpendicular direction vector
-     * (x1,y1) is the vector of the target perpendicular direction vector
-     * output is ( cos_theta, sin_theta )
+     * Calculates the angle between the target and the original vector
+     * 
+     * @param (x0,y0) is the vector of the original perpendicular direction vector
+     * @param (x1,y1) is the vector of the target perpendicular direction vector
+     * 
+     * @return ( cos_theta, sin_theta )
      */
     public static double[] rotation_angle( double x0, double y0, double x1, double y1)
     {
@@ -34,6 +37,14 @@ public class RotationTransform
         return result;
     }    
         
+    /**
+     * Rotates a point aroun a fixed point
+     * 
+     * @param (ptx,pty) the point that one wants to rotate
+     * @param (fixx,fixy) the point that is being rotated around
+     * @param an array containing cos_theta and sin_theta of the rotation vector Can be created by rotation_angle
+     * @return returns an array containing the coordinates of the rotated points
+     */
     public static double[] rotate(double ptx, double pty, double fixx, double fixy, double[] theta)
     {
         double x = ptx - fixx;

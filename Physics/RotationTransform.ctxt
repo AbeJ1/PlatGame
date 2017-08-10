@@ -1,12 +1,13 @@
 #BlueJ class context
 comment0.target=RotationTransform
-comment0.text=\n\ Write\ a\ description\ of\ class\ RotationTransform\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\r\n\ contains\ funtions\ to\ rotate\ points\r\n\r\n\ @author\ Ancient\ Wisdom\r\n\ @version\ v1\r\n
 comment1.params=
 comment1.target=RotationTransform()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ RotationTransform\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ RotationTransform\r\n
 comment2.params=x0\ y0\ x1\ y1
 comment2.target=double[]\ rotation_angle(double,\ double,\ double,\ double)
-comment2.text=\n\ (x0,y0)\ is\ the\ vector\ of\ the\ original\ perpendicular\ direction\ vector\n\ (x1,y1)\ is\ the\ vector\ of\ the\ target\ perpendicular\ direction\ vector\n\ output\ is\ (\ cos_theta,\ sin_theta\ )\n
+comment2.text=\r\n\ Calculates\ the\ angle\ between\ the\ target\ and\ the\ original\ vector\r\n\ \r\n\ @param\ (x0,y0)\ is\ the\ vector\ of\ the\ original\ perpendicular\ direction\ vector\r\n\ @param\ (x1,y1)\ is\ the\ vector\ of\ the\ target\ perpendicular\ direction\ vector\r\n\ \r\n\ @return\ (\ cos_theta,\ sin_theta\ )\r\n
 comment3.params=ptx\ pty\ fixx\ fixy\ theta
 comment3.target=double[]\ rotate(double,\ double,\ double,\ double,\ double[])
+comment3.text=\r\n\ Rotates\ a\ point\ aroun\ a\ fixed\ point\r\n\ \r\n\ @param\ (ptx,pty)\ the\ point\ that\ one\ wants\ to\ rotate\r\n\ @param\ (fixx,fixy)\ the\ point\ that\ is\ being\ rotated\ around\r\n\ @param\ an\ array\ containing\ cos_theta\ and\ sin_theta\ of\ the\ rotation\ vector\ Can\ be\ created\ by\ rotation_angle\r\n\ @return\ returns\ an\ array\ containing\ the\ coordinates\ of\ the\ rotated\ points\r\n
 numComments=4
