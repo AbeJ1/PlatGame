@@ -20,7 +20,8 @@ public class Tile extends Sprite
     private void init_images()
     {
        img = getImgfromURL("Resources/Wood Full Tile.png");
-       
+       double[] corners = new double[]{this.x,this.y,this.x,this.y-this.img.getHeight()};
+       hb = new HitBox(corners);
     }
     
     public Tile(double x, double y,double scale)

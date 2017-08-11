@@ -5,6 +5,24 @@ dependency1.type=UsesDependency
 dependency2.from=Player
 dependency2.to=HitBox
 dependency2.type=UsesDependency
+<<<<<<< HEAD
+=======
+objectbench.height=92
+objectbench.width=1007
+package.divider.horizontal=0.5336842105263158
+package.divider.vertical=0.8936627282491945
+package.editor.height=825
+package.editor.width=1790
+package.editor.x=1357
+package.editor.y=-9
+<<<<<<< HEAD
+package.frame.height=1050
+package.frame.width=1938
+=======
+package.frame.height=738
+package.frame.width=1384
+=======
+>>>>>>> 847bfbd28334507cc29cfb2c601efef725c1f52c
 objectbench.height=101
 objectbench.width=461
 package.divider.horizontal=0.6
@@ -15,6 +33,11 @@ package.editor.x=-979
 package.editor.y=400
 package.frame.height=600
 package.frame.width=800
+<<<<<<< HEAD
+=======
+>>>>>>> 71c34688b97bc5a3b9afd57669e0d0eb06eca996
+>>>>>>> c54284a037f8fbd36dc04a0e54ade9084e124b7f
+>>>>>>> 847bfbd28334507cc29cfb2c601efef725c1f52c
 package.numDependencies=2
 package.numTargets=7
 package.showExtends=true

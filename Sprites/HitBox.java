@@ -8,7 +8,7 @@ import Physics.TranslateTransform;
  * @author Comerstar
  * @version v0.1
  */
-public class HitBox
+public class HitBox extends Sprite
 {
 
     private double[] xcoordinates;
@@ -19,6 +19,7 @@ public class HitBox
      */
     public HitBox(double[] corners)
     {
+        super();
         xcoordinates = new double[corners.length/2];
         ycoordinates = new double[corners.length/2];
         for (int i = 0; i < corners.length; i += 2)
@@ -95,8 +96,8 @@ public class HitBox
         for (int i = 0; i < xcoordinates.length;i++)
         {
             
-            b = -(xcoordinates[(i+1) % xcoordinates.length] - xcoordinates[i]);
-            a =  (ycoordinates[(i+1) % ycoordinates.length] - ycoordinates[i]);
+            b = -(absxcoordinates((i+1) % xcoordinates.length) - absxcoordinates(i));
+            a =  (absycoordinates((i+1) % ycoordinates.length) - absycoordinates(i));
 
             if (a * (xcor - this.xcoordinates[i]) + b * (ycor - this.ycoordinates[i]) <= 0)
             {
@@ -110,6 +111,16 @@ public class HitBox
         return(inside);
     }
     
+    public double absxcoordinates(int i)
+    {
+        return xcoordinates[i] + x;
+    }
+    
+    public double absycoordinates(int i)
+    {
+        return ycoordinates[i] + y;
+    }
+    
     public boolean[] PointInFail(double xcor,double ycor)
     {
         double a;
@@ -118,8 +129,8 @@ public class HitBox
         for (int i = 0; i < xcoordinates.length;i++)
         {
             
-            b = -(xcoordinates[(i+1) % xcoordinates.length] - xcoordinates[i]);
-            a =  (ycoordinates[(i+1) % ycoordinates.length] - ycoordinates[i]);
+            b = -(absxcoordinates((i+1) % xcoordinates.length) - absxcoordinates(i));
+            a =  (absycoordinates((i+1) % ycoordinates.length) - absycoordinates(i));
 
             if (a * (xcor - this.xcoordinates[i]) + b * (ycor - this.ycoordinates[i]) <= 0)
             {
@@ -135,6 +146,16 @@ public class HitBox
         return(failed);
     }
     
+    public int xlength()
+    {
+        return xcoordinates.length;
+    }
+    
+    public int ylength()
+    {
+        return ycoordinates.length;
+    }
+    
     public HitBox Collide (HitBox HB, HitBox OHB)
     {
         double[] c = {0,0};
@@ -143,24 +164,24 @@ public class HitBox
         double y = 0;
         double hbx = 0;
         double hby = 0;
-        double[] corners = new double[2 * HB.xcoordinates.length];
-        for (int i = 0; i < HB.xcoordinates.length;i++)
+        double[] corners = new double[2 * HB.xlength()];
+        for (int i = 0; i < HB.xlength();i++)
         {
-            if (isPointIn(HB.xcoordinates[i],HB.ycoordinates[i]))
+            if (isPointIn(HB.absxcoordinates(i),HB.absycoordinates(i)))
             {
-                boolean[] failed = PointInFail(OHB.xcoordinates[i], OHB.ycoordinates[i]);
+                boolean[] failed = PointInFail(OHB.absxcoordinates(i), OHB.absycoordinates(i));
                 for (int j = 0; j < failed.length; j++)
                 {
                     if (!failed[j])
                     {
-                        double x0 = OHB.xcoordinates[i];
-                        double x1 = HB.xcoordinates[i];
-                        double x2 = this.xcoordinates[j];
-                        double x3 = this.xcoordinates[(j + 1) % this.xcoordinates.length];
-                        double y0 = OHB.ycoordinates[i];
-                        double y1 = HB.ycoordinates[i];
-                        double y2 = this.ycoordinates[j];
-                        double y3 = this.ycoordinates[(j + 1) % this.ycoordinates.length];
+                        double x0 = OHB.absxcoordinates(i);
+                        double x1 = HB.absxcoordinates(i);
+                        double x2 = absxcoordinates(j);
+                        double x3 = absxcoordinates((j + 1) % xcoordinates.length);
+                        double y0 = OHB.absycoordinates(i);
+                        double y1 = HB.absycoordinates(i);
+                        double y2 = absycoordinates(j);
+                        double y3 = absycoordinates((j + 1) % ycoordinates.length);
                         double m = (y1 - y0)/(x1 - x0);
                         double m2 = (y3 - y2)/(x3 - x2);
                         x = (y0 - y2 + m2*x2 - m*x0)/(m2 - m);
@@ -172,23 +193,24 @@ public class HitBox
                             {
                                 break;
                             }
-                            hbx = HB.xcoordinates[i];
-                            hby = HB.ycoordinates[i];
-                            for (int l = 0; l < HB.xcoordinates.length; l++)
+                            hbx = HB.absxcoordinates(i);
+                            hby = HB.absycoordinates(i);
+                            for (int l = 0; l < HB.xlength(); l++)
                             {
-                                double[] translatedHB = TranslateTransform.Translate(HB.xcoordinates[l],HB.ycoordinates[l],x - hbx,y - hby);
+                                double[] translatedHB = TranslateTransform.Translate(HB.xcoordinates[l],HB.ycoordinates[l]
+                                ,x - hbx,y - hby);
                                 corners[l] = translatedHB[0];
                                 corners[l + 1] = translatedHB[1];
                             }
                             NHB = new HitBox(corners);
-                            double x4 = NHB.xcoordinates[i];
-                            double x5 = NHB.xcoordinates[(i + 1) % NHB.xcoordinates.length];
-                            double x6 = this.xcoordinates[j];
-                            double x7 = this.xcoordinates[(j + 1) % this.xcoordinates.length];
-                            double y4 = NHB.ycoordinates[i];
-                            double y5 = NHB.ycoordinates[(i + 1) % NHB.xcoordinates.length];
-                            double y6 = this.ycoordinates[j];
-                            double y7 = this.ycoordinates[(j + 1) % this.ycoordinates.length];
+                            double x4 = NHB.absxcoordinates(i);
+                            double x5 = NHB.absxcoordinates((i + 1) % NHB.xcoordinates.length);
+                            double x6 = absxcoordinates(j);
+                            double x7 = absxcoordinates((j + 1) % this.xcoordinates.length);
+                            double y4 = NHB.absycoordinates(i);
+                            double y5 = NHB.absycoordinates((i + 1) % NHB.xcoordinates.length);
+                            double y6 = absycoordinates(j);
+                            double y7 = absycoordinates((j + 1) % this.ycoordinates.length);
                             double m3 = (y5 - y4)/(x5 - x0);
                             double m4 = (y7 - y6)/(x7 - x6);
                             double xx = (y4 - y6 + m4*x6 - m*x4)/(m4 - m3);
