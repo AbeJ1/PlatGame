@@ -15,8 +15,6 @@ public abstract class Sprite
     protected Image img;
     protected double x;
     protected double y;
-    private int intx;
-    private int inty;
     protected boolean visible;
     protected double scale;
 
@@ -128,7 +126,6 @@ public abstract class Sprite
     {
         int img_width = img.getWidth(null);
         int img_height = img.getHeight(null);
-        System.out.println(x);
         g.drawImage(img, (int)x, (int)y, img_width+(int)x, img_height+(int)y,
                     0, 0, img_width, img_height, null);
     }

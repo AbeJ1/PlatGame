@@ -77,16 +77,18 @@ public class Player extends Entity
     {
        double x = 0.0;
        double y = 0.0;
-       double xgrav = 1.0;
-       double ygrav = 1.0;
+       double xgrav = 0.0;
+       double ygrav = 0.0;
        double xm = 0.0;
        double ym = 0.0;
        int hp = 5;
        int FHP = 10;
+       double maxx = 1000.0;
+       double maxy = 500.0;
        double maxxm = 10.0;
        double maxym = 10.0;
        double scale = 5.0;
-       update(x,y, xgrav, ygrav, xm, ym, hp, FHP,maxxm,maxym,scale); 
+       update(x,y, xgrav, ygrav, xm, ym, hp, FHP,maxx, maxy,maxxm,maxym,scale); 
     }
     
     public Player()
@@ -138,31 +140,19 @@ public class Player extends Entity
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            //this.Physics.addtoXM(-2.0);
-            this.x -= 5;
-            System.out.println("LEFT");
-            System.out.println(this.x);
+            Physics.changeMomentum(-1.0,0.0);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            //this.Physics.addtoXM(2.0);
-            this.x += 5;
-            System.out.println("RIGHT");
-            System.out.println(this.x);
+            Physics.changeMomentum(1.0,0.0);
         }
         
         if (key == KeyEvent.VK_UP) {
-            //this.Physics.addtoXM(-2.0);
-            this.y -= 5;
-            System.out.println("LEFT");
-            System.out.println(this.x);
+            Physics.changeMomentum(0.0,-1.0);
         }
         
         if (key == KeyEvent.VK_DOWN) {
-            //this.Physics.addtoXM(-2.0);
-            this.y += 5;
-            System.out.println("LEFT");
-            System.out.println(this.x);
+            Physics.changeMomentum(0.0,1.0);
         }
     }
 

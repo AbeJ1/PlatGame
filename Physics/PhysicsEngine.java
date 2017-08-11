@@ -1,37 +1,40 @@
 package Physics;
-
+import static java.lang.Math.*;
 
 /**
- * Write a description of class PhysicsEingine here.
+ * This handles the physics such as gravity
  *
  * @author Comerstar
  * @version v0.1
+ * 
  */
 public class PhysicsEngine
 {
-    // instance variables - replace the example below with your own
-    private double xgrav;
-    private double ygrav;
-    private double xm;
-    private double ym;
-    private double x;
-    private double y;
-    private double maxx;
-    private double maxy;
-    private double maxxm;
-    private double maxym;
+    // xgrav is the gravity in x direction
+    // xm is the momentum in x direction
+    // xpos is the x position
+    // maxx is the max x posiiton
+    // maxxm is the momentum limit in x direction
+    private double xgrav = 0.0;
+    private double ygrav = 0.0;
+    private double xm = 0.0;
+    private double ym = 0.0;
+    private double maxx = 0.0;
+    private double maxy = 0.0;
+    private double maxxm = 0.0;
+    private double maxym = 0.0;
     /**
      * Constructor for objects of class PhysicsEngine
      */
-    public PhysicsEngine(double xgrav,double ygrav, double x, double y, double xm, double ym,double maxxm, 
+    public PhysicsEngine(double xgrav,double ygrav,double xm, double ym,double maxx, double maxy, double maxxm, 
     double maxym)
     {
         this.xgrav = xgrav;
         this.ygrav = ygrav;
         this.xm = xm;
         this.ym = ym;
-        this.x = x;
-        this.y = y;
+        this.maxx = maxx;
+        this.maxy = maxy;
         this.maxxm = maxxm;
         this.maxym = maxym;
     }
@@ -60,32 +63,12 @@ public class PhysicsEngine
         ym = y;
     }
     
-    public void setXM(double x)
-    {
-        xm = x;
-    }
-    
-    public void setYM(double y)
-    {
-        ym = y;
-    }
-    
-    public void addtoXM(double x)
-    {
-        xm += x;
-    }
-    
-    public void addtoYM(double y)
-    {
-        ym += y;
-    }
-    
-    public double getXM()
+    public double getXMomentum()
     {
         return this.xm;
     }
     
-    public double getYM()
+    public double getYMomentum()
     {
         return this.ym;
     }
@@ -99,27 +82,14 @@ public class PhysicsEngine
     }
     
     /**
-     * This changes the position by the current gravity vector
+     * Update momentum by the current gravity vector
      */
-    public void applyPosGravity()
+    public void updateMomentum(double x, double y)
     {
-        x += xgrav;
-        y += ygrav;
-    }
-    
-    public void applyMomGravity()
-    {
-        xm += xgrav;
-        ym += ygrav;
-    }
-    
-    /**
-     * This changes the position by the momentum
-     */
-    public void updatePosition()
-    {
-        x += xm;
-        y += ym;
+        double txm = max(min(x + xm + xgrav,maxx),0.0);
+        double tym = max(min(y + ym + ygrav,maxy),0.0);
+        xm = max(min(txm-x,maxxm),-maxxm);
+        ym = max(min(tym-y,maxym),-maxym);
     }
     
     /**
@@ -134,13 +104,4 @@ public class PhysicsEngine
         ygrav = yGrav;
     }
     
-    public double getX()
-    {
-        return this.x;
-    }
-    
-    public double getY()
-    {
-        return this.y;
-    }
 }
