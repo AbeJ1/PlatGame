@@ -48,6 +48,7 @@ public abstract class Sprite
         this.y = y;
         this.img = img;
         visible = true;
+        AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
     }
     
     public void update(double x,double y, double scale)
@@ -57,6 +58,14 @@ public abstract class Sprite
         this.x = x;
         this.y = y;
         visible = true;
+        AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
+    }
+    
+    public void changeXY (double x, double y)
+    {
+        this.x = x;
+        this.y = y;
+        AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
     }
     
         public double getScale()
