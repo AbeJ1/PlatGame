@@ -1,6 +1,7 @@
 package Sprites;
 import Physics.RotationTransform;
 import Physics.TranslateTransform;
+import java.lang.Math;
 
 /**
  * Write a description of class HitBox here.
@@ -13,7 +14,11 @@ public class HitBox
 
     private double[] xcoordinates;
     private double[] ycoordinates;
-
+    public double theta = 0;
+    public double xr = 0;
+    public double yr = 0;
+    public double xt = 0;
+    public double yt = 0;
     /**
      * Constructor for objects of class HitBox
      */
@@ -174,6 +179,8 @@ public class HitBox
                             }
                             hbx = HB.xcoordinates[i];
                             hby = HB.ycoordinates[i];
+                            this.xt = hbx;
+                            this.yt = hby;
                             for (int l = 0; l < HB.xcoordinates.length; l++)
                             {
                                 double[] translatedHB = TranslateTransform.Translate(HB.xcoordinates[l],HB.ycoordinates[l],x - hbx,y - hby);
@@ -200,17 +207,34 @@ public class HitBox
                                 {
                                     break;
                                 }
-                                double[] theta = RotationTransform.rotation_angle(NHB.xcoordinates[(k + 1) % NHB.xcoordinates.length] - 
-                                NHB.xcoordinates[k],NHB.ycoordinates[(k + 1) % NHB.ycoordinates.length] - 
-                                NHB.xcoordinates[k],this.xcoordinates[(j+1) % this.xcoordinates.length] - 
-                                this.xcoordinates[j],this.ycoordinates[(j+1) % this.xcoordinates.length] - 
-                                this.ycoordinates[j]);
+                                double xxx1 = NHB.xcoordinates[(k + 1) % NHB.xcoordinates.length] - 
+                                NHB.xcoordinates[k];
+                                double yyy1 = NHB.ycoordinates[(k + 1) % NHB.ycoordinates.length] - 
+                                NHB.xcoordinates[k];
+                                double xxx2 = this.xcoordinates[(j+1) % this.xcoordinates.length] - 
+                                this.xcoordinates[j];
+                                double yyy2 = this.ycoordinates[(j+1) % this.xcoordinates.length] - 
+                                this.ycoordinates[j];
+                                double[] thetacos = RotationTransform.rotation_angle(
+                                Math.sqrt(1 - yyy1 * yyy1),
+                                Math.sqrt(1 - xxx1 * xxx1),
+                                Math.sqrt(1 - yyy2 * yyy2),
+                                Math.sqrt(1 - xxx2 * xxx2));
                                 for (int l = 0; l < HB.xcoordinates.length; l++)
                                 {
-                                    double[] translatedHB = TranslateTransform.Translate(HB.xcoordinates[l],HB.ycoordinates[l],x - hbx,y - hby);
-                                    corners[l] = translatedHB[0];
-                                    corners[l + 1] = translatedHB[1];
+                                    double[] RotatedHB = RotationTransform.rotate(NHB.xcoordinates[l],
+                                    NHB.ycoordinates[l],xx,yy,thetacos);
+                                    corners[l] = RotatedHB[0];
+                                    corners[l + 1] = RotatedHB[1];
                                 }
+                                NHB = new HitBox(corners);
+                                this.theta = Math.acos(thetacos[0]);
+                                if (thetacos[1] < 0)
+                                {
+                                    this.theta *= -1;
+                                }
+                                this.xr = xx;
+                                this.yr = yy;
                             }
                         }
                     }

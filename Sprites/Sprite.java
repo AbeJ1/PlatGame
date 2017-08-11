@@ -2,6 +2,7 @@ package Sprites;
 import java.awt.*;
 import javax.swing.*;
 import java.net.URL;
+import java.awt.geom.AffineTransform;
 
 /**
  * Abstract class that is the basic sprite, an image on the screen with a hitbox
@@ -19,6 +20,7 @@ public abstract class Sprite
     private int inty;
     protected boolean visible;
     protected double scale;
+    protected AffineTransform AT;
 
     /**
      * Constructor for objects of class Sprite
@@ -26,6 +28,7 @@ public abstract class Sprite
     public Sprite()
     {
         this.visible = true;
+        AT = new AffineTransform();
     }
     
     public void update(String URL,double x,double y, double scale)
@@ -35,6 +38,7 @@ public abstract class Sprite
         this.x = x;
         this.y = y;
         this.img = getImgfromURL(URL);
+        AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
         visible = true;
     }
     
@@ -73,6 +77,11 @@ public abstract class Sprite
     public boolean getVisible()
     {
         return(this.visible);
+    }
+    
+    public void rotate(double theta, double fixx, double fixy)
+    {
+        AT.rotate(theta, fixx, fixy);
     }
     
     /**
