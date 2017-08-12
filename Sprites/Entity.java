@@ -8,7 +8,7 @@ import Physics.PhysicsEngine;
  * @author Comerstar
  * @version v0.1
  */
-public class Entity extends Sprite
+public class Entity extends HitBox
 {
     protected int health;
     protected int fullHP;
@@ -117,6 +117,8 @@ public class Entity extends Sprite
     public void updateState()
     {
         Physics.updateMomentum(x, y);
+        oldx = x;
+        oldy = y;
         x += Physics.getXMomentum();
         y += Physics.getYMomentum();
     }

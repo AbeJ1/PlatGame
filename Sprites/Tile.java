@@ -7,7 +7,7 @@ package Sprites;
  * @author Comerstar
  * @version v0.1
  */
-public class Tile extends Sprite
+public class Tile extends HitBox
 {
     // instance variables - replace the example below with your own
     private int type;
@@ -20,16 +20,16 @@ public class Tile extends Sprite
     private void init_images()
     {
        img = getImgfromURL("Resources/Wood Full Tile.png");
-       double[] corners = new double[]{this.x,this.y,this.x,this.y-this.img.getHeight()};
-       hb = new HitBox(corners);
+       double h = img.getHeight(null);
+       double w = img.getWidth(null);
+       updateHitbox(new double[]{0,0,0,h,h,w,w,0});
     }
     
     public Tile(double x, double y,double scale)
     {
-        // initialise instance variables
-        super();
-        init_images();
-        update(x,y,scale);
+       super();
+       init_images();
+       update(x,y,scale);
     }
     
     

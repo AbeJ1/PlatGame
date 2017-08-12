@@ -86,6 +86,11 @@ public class GamePanel extends JPanel implements Runnable
                 System.out.println("interrupted");
             }
             playerA.updateState();
+            tileA.Collide(playerA);
+            if (tileA.testCollide(playerA))
+            {
+                break;
+            }
             repaint();
             beforeTime = System.currentTimeMillis();
             playerA.increaseAT();

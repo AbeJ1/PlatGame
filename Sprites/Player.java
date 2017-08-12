@@ -56,6 +56,9 @@ public class Player extends Entity
        FlyAn.add(getImgfromURL("Resources/ASS2.png"));
        DieAn.add(getImgfromURL("Resources/ASS1.png"));
        DieAn.add(getImgfromURL("Resources/ASS2.png"));
+       double h = IdleAn.get(0).getHeight(null);
+       double w = IdleAn.get(0).getWidth(null);
+       updateHitbox(new double[]{0,0,0,h,h,w,w,0});
     }
     
     /**
