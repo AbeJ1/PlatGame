@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Entity
 comment0.text=\r\n\ This\ is\ a\ sprite\ with\ health\ and\ AI\ \r\n\r\n\ @author\ Comerstar\r\n\ @version\ v0.1\r\n
-comment1.params=
-comment1.target=Entity()
+comment1.params=corners
+comment1.target=Entity(double[])
 comment2.params=s\ x\ y\ xgrav\ ygrav\ xm\ ym\ hp\ FHP\ maxxm\ maxym\ scale
 comment2.target=void\ update(java.lang.String,\ double,\ double,\ double,\ double,\ double,\ double,\ int,\ int,\ double,\ double,\ double)
 comment3.params=img\ x\ y\ xgrav\ ygrav\ xm\ ym\ hp\ FHP\ maxxm\ maxym\ scale

@@ -14,11 +14,11 @@ public class HitBox extends Sprite
 
     private double[] xcoordinates;
     private double[] ycoordinates;
-    public double theta = 0;
-    public double xr = 0;
-    public double yr = 0;
-    public double xt = 0;
-    public double yt = 0;
+    protected double theta = 0;
+    protected double xr = 0;
+    protected double yr = 0;
+    protected double xt = 0;
+    protected double yt = 0;
     /**
      * Constructor for objects of class HitBox
      */
@@ -195,10 +195,25 @@ public class HitBox extends Sprite
                         double y1 = HB.absy(i);
                         double y2 = absy(j);
                         double y3 = absy((j + 1) % this.ycoordinates.length);
-                        double m = (y1 - y0)/(x1 - x0);
-                        double m2 = (y3 - y2)/(x3 - x2);
-                        x = (y0 - y2 + m2*x2 - m*x0)/(m2 - m);
-                        y = (m*y2 - m2*y0 + m*m2*x0 - m*m2*x2)/(m - m2);
+                        if (x0 == x1)
+                        {
+                            double m = (y3 - y2)/(x3 - x2);
+                            x = x0;
+                            y = m*(x0 - x3) - y1;
+                        }
+                        else if (x2 == x3)
+                        {
+                            double m = (y1 - y0)/(x1 - x0);
+                            x = x2;
+                            y = m*(x2 - x1) - y3;
+                        }
+                        else
+                        {
+                            double m = (y1 - y0)/(x1 - x0);
+                            double m2 = (y3 - y2)/(x3 - x2);
+                            x = (y0 - y2 + m2*x2 - m*x0)/(m2 - m);
+                            y = (m*y2 - m2*y0 + m*m2*x0 - m*m2*x2)/(m - m2);
+                        }
                         boolean[] fails = PointInFail(x,y);
                         boolean failedv = true;
                         for (int k = 0; k < fails.length; k++)
@@ -229,10 +244,27 @@ public class HitBox extends Sprite
                             double y5 = NHB.absy((i + 1) % NHB.xcoordinates.length);
                             double y6 = absy(j);
                             double y7 = absy((j + 1) % ycoordinates.length);
-                            double m3 = (y5 - y4)/(x5 - x0);
-                            double m4 = (y7 - y6)/(x7 - x6);
-                            double xx = (y4 - y6 + m4*x6 - m*x4)/(m4 - m3);
-                            double yy = (m3*y6 - m4*y4 + m3*m4*x4 - m3*m4*x6)/(m3 - m4);
+                            double xx;
+                            double yy;
+                            if (x4 == x5)
+                            {
+                                double m = (y7 - y6)/(x7 - x6);
+                                xx = x4;
+                                yy = m*(x4 - x7) - y5;
+                            }
+                            else if (x6 == x7)
+                            {
+                                double m = (y5 - y4)/(x5 - x4);
+                                xx = x6;
+                                yy = m*(x6 - x5) - y7;
+                            }
+                            else
+                            {
+                                double m = (y5 - y4)/(x5 - x4);
+                                double m2 = (y7 - y6)/(x7 - x6);
+                                xx = (y0 - y2 + m2*x2 - m*x0)/(m2 - m);
+                                yy = (m*y2 - m2*y0 + m*m2*x0 - m*m2*x2)/(m - m2);
+                            }
                             boolean[] fails2 = PointInFail(xx,yy);
                             boolean failedu = true;
                             for (int n = 0; n < fails.length; n++)

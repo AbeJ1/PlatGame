@@ -8,15 +8,15 @@ import Physics.PhysicsEngine;
  * @author Comerstar
  * @version v0.1
  */
-public class Entity extends Sprite
+public class Entity extends HitBox
 {
     protected int health;
     protected int fullHP;
     protected PhysicsEngine Physics;
     
-    public Entity()
+    public Entity(double[] corners)
     {
-        super();
+        super(corners);
     }
     
     public void update(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
