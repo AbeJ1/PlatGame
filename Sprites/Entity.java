@@ -20,22 +20,22 @@ public class Entity extends HitBox
     }
     
     public void update(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
-    int FHP,double maxxm,double maxym, double scale)
+    int FHP,double maxx, double maxy, double maxxm,double maxym, double scale)
     {
         // initialise instance variables
         update(s,x,y,scale);
         health = hp;
         fullHP = FHP;
-        Physics = new PhysicsEngine(x,y,xgrav,ygrav,xm,ym,maxxm,maxym);
+        Physics = new PhysicsEngine(xgrav,ygrav,xm,ym,maxx, maxy,maxxm,maxym);
     }
     
     public void update(Image img,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
-    int FHP,double maxxm,double maxym, double scale)
+    int FHP,double maxx, double maxy,double maxxm,double maxym, double scale)
     {
         update(img,x,y,scale);
         health = hp;
         fullHP = FHP;
-        Physics = new PhysicsEngine(x,y,xgrav,ygrav,xm,ym,maxxm,maxym);
+        Physics = new PhysicsEngine(xgrav,ygrav,xm,ym,maxx, maxy, maxxm,maxym);
     }
     
     /**
@@ -54,12 +54,12 @@ public class Entity extends HitBox
      * @param scale how many pixels large each square is
      */
     public void update(double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 
-    int FHP,double maxxm,double maxym, double scale)
+    int FHP,double maxx, double maxy,double maxxm,double maxym, double scale)
     {
         update(x,y,scale);
         health = hp;
         fullHP = FHP;
-        Physics = new PhysicsEngine(x,y,xgrav,ygrav,xm,ym,maxxm,maxym);
+        Physics = new PhysicsEngine(xgrav,ygrav,xm,ym,maxx, maxy,maxxm,maxym);
     }
     
     /**
@@ -112,5 +112,14 @@ public class Entity extends HitBox
     public void changeImage(Image img)
     {
         this.changeImg(img);
+    }
+    
+    public void updateState()
+    {
+        Physics.updateMomentum(x, y);
+        oldx = x;
+        oldy = y;
+        x += Physics.getXMomentum();
+        y += Physics.getYMomentum();
     }
 }

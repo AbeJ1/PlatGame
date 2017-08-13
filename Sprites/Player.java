@@ -49,6 +49,9 @@ public class Player extends Entity
        FlyAn.add(getImgfromURL("Resources/ASS2.png"));
        DieAn.add(getImgfromURL("Resources/ASS1.png"));
        DieAn.add(getImgfromURL("Resources/ASS2.png"));
+       double h = IdleAn.get(0).getHeight(null);
+       double w = IdleAn.get(0).getWidth(null);
+       updateHitbox(new double[]{0,0,0,h,h,w,w,0});
     }
     
     /**
@@ -70,16 +73,18 @@ public class Player extends Entity
     {
        double x = 0.0;
        double y = 0.0;
-       double xgrav = 1.0;
-       double ygrav = 1.0;
+       double xgrav = 0.0;
+       double ygrav = 0.0;
        double xm = 0.0;
        double ym = 0.0;
        int hp = 5;
        int FHP = 10;
+       double maxx = 1000.0;
+       double maxy = 500.0;
        double maxxm = 10.0;
        double maxym = 10.0;
        double scale = 5.0;
-       update(x,y, xgrav, ygrav, xm, ym, hp, FHP,maxxm,maxym,scale); 
+       update(x,y, xgrav, ygrav, xm, ym, hp, FHP,maxx, maxy,maxxm,maxym,scale); 
     }
     
     public Player(double[] corners)
@@ -131,6 +136,7 @@ public class Player extends Entity
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
+<<<<<<< HEAD
             //this.Physics.addtoXM(-2.0);
             this.x += 5;
             System.out.println("LEFT");
@@ -143,6 +149,22 @@ public class Player extends Entity
             System.out.println("RIGHT");
             System.out.println(this.x);
         }
+=======
+            Physics.changeMomentum(-1.0,0.0);
+        }
+
+        if (key == KeyEvent.VK_RIGHT) {
+            Physics.changeMomentum(1.0,0.0);
+        }
+        
+        if (key == KeyEvent.VK_UP) {
+            Physics.changeMomentum(0.0,-1.0);
+        }
+        
+        if (key == KeyEvent.VK_DOWN) {
+            Physics.changeMomentum(0.0,1.0);
+        }
+>>>>>>> c3df2921bbb30af0f49a40ada7f83b34998384d3
     }
 
     public void keyReleased(KeyEvent e) {

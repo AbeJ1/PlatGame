@@ -38,7 +38,8 @@ public class GamePanel extends JPanel implements Runnable
     
     private Thread animator;
     
-    private Player playerA = new Player();
+    private Player playerA;
+    private Tile tileA;
     
     /**
      * Constructor for objects of class GamePanel
@@ -53,6 +54,9 @@ public class GamePanel extends JPanel implements Runnable
     }
     
     public void gameInit() {
+        playerA = new Player();
+        tileA = new Tile(100, 0,1);
+        
         if (animator == null ){
             animator = new Thread(this);
             animator.start();
@@ -69,11 +73,9 @@ public class GamePanel extends JPanel implements Runnable
         //1 Level
         //2 World
         beforeTime = System.currentTimeMillis();
-        System.out.println("Start");
         while (playing) {
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;
-            System.out.println("Running");
             if (sleep < 0) {
                 sleep = 2;
             }
@@ -83,7 +85,12 @@ public class GamePanel extends JPanel implements Runnable
             } catch (InterruptedException e) {
                 System.out.println("interrupted");
             }
-            System.out.println("Continued");
+            playerA.updateState();
+            tileA.Collide(playerA);
+            if (tileA.testCollide(playerA))
+            {
+                break;
+            }
             repaint();
             beforeTime = System.currentTimeMillis();
             playerA.increaseAT();
@@ -101,7 +108,7 @@ public class GamePanel extends JPanel implements Runnable
         try{
             drawBackground(g);
             playerA.draw(g,1);
-            System.out.println("Painting");
+            tileA.draw(g,1);
         }
         catch(Exception e)
         {
@@ -128,7 +135,6 @@ public class GamePanel extends JPanel implements Runnable
         
         @Override 
         public void keyPressed(KeyEvent e){
-            System.out.println("Keys");
             playerA.keyPressed(e);
         }
     }

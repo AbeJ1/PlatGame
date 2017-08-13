@@ -16,8 +16,8 @@ public abstract class Sprite
     protected Image img;
     protected double x;
     protected double y;
-    private int intx;
-    private int inty;
+    protected double oldx;
+    protected double oldy;
     protected boolean visible;
     protected double scale;
     protected AffineTransform AT;
@@ -37,6 +37,8 @@ public abstract class Sprite
         this.scale = scale;
         this.x = x;
         this.y = y;
+        oldx = x;
+        oldy = y;
         this.img = getImgfromURL(URL);
         AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
         visible = true;
@@ -48,6 +50,8 @@ public abstract class Sprite
         this.scale = scale;
         this.x = x;
         this.y = y;
+        oldx = x;
+        oldy = y;
         this.img = img;
         visible = true;
         AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
@@ -59,14 +63,21 @@ public abstract class Sprite
         this.scale = scale;
         this.x = x;
         this.y = y;
+        oldx = x;
+        oldy = y;
         visible = true;
         AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
     }
     
     public void changeXY (double x, double y)
     {
+        System.out.print("Before x");
+        System.out.println(this.x);
+        System.out.print("After x");
+        System.out.println(x);
         this.x = x;
         this.y = y;
+        
         AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
     }
     
@@ -146,7 +157,6 @@ public abstract class Sprite
     {
         int img_width = img.getWidth(null);
         int img_height = img.getHeight(null);
-        System.out.println(x);
         g.drawImage(img, (int)x, (int)y, img_width+(int)x, img_height+(int)y,
                     0, 0, img_width, img_height, null);
     }

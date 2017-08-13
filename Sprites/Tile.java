@@ -7,42 +7,30 @@ package Sprites;
  * @author Comerstar
  * @version v0.1
  */
-public class Tile extends Sprite
+public class Tile extends HitBox
 {
     // instance variables - replace the example below with your own
-    private int xscreen;
-    private int yscreen;
     private int type;
+    private HitBox hb;
     
     /**
      * Constructor for objects of class Tile
      */
-    public Tile(String s,double x, double y, int xscreen, int yscreen,double scale)
+    
+    private void init_images()
     {
-        // initialise instance variables
-        super();
-        update(s,x,y,scale);
-        this.xscreen = xscreen;
-        this.yscreen = yscreen;
+       img = getImgfromURL("Resources/Wood Full Tile.png");
+       double h = img.getHeight(null);
+       double w = img.getWidth(null);
+       updateHitbox(new double[]{0,0,0,h,h,w,w,0});
     }
     
-    /**
-     * returns this tiles x screen location
-     * 
-     * @return the x screen value
-     */
-    public int getXscreen()
+    public Tile(double x, double y,double scale)
     {
-        return this.xscreen;
+       super();
+       init_images();
+       update(x,y,scale);
     }
     
-    /**
-     * returns this tiles y screen location
-     * 
-     * @return the y screen value
-     */
-    public int getYscreen()
-    {
-        return this.yscreen;
-    }
+    
 }
