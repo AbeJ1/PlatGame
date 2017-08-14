@@ -18,6 +18,12 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
+import java.io.FileReader;
+
 
 /**
  * A GamePanel
@@ -50,8 +56,28 @@ public class GamePanel extends JPanel implements Runnable
         addKeyListener(new TAdapter());
         setFocusable(true);
         this.b = new Background(0,0,"Resources/Swords.png",0,0,0,5);
+        jsonTest();
         gameInit();
     }
+    
+    public void jsonTest()
+    {
+        JSONParser parser = new JSONParser();
+        try
+        {
+            FileReader FD = new FileReader("Resources/testdata.json");
+            Object obj = parser.parse(FD);
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray playerdata = (JSONArray) jsonObject.get("player");
+            JSONArray tiledata = (JSONArray) jsonObject.get("tile");
+            Iterator<Double> iterator = playerdata.iterator();
+            while (iterator.hasNext()){
+                System.out.println(iterator.next());
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    };
     
     public void gameInit() {
         playerA = new Player();
