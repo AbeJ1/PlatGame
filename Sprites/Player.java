@@ -41,6 +41,13 @@ public class Player extends Entity
        
        IdleAn.add(getImgfromURL("Resources/ASS1.png"));
        IdleAn.add(getImgfromURL("Resources/ASS2.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS3.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS4.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS5.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS4.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS3.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS2.png"));
+       IdleAn.add(getImgfromURL("Resources/ASS1.png"));
        WalkAn.add(getImgfromURL("Resources/ASS1.png"));
        WalkAn.add(getImgfromURL("Resources/ASS2.png"));
        AttAn.add(getImgfromURL("Resources/ASS1.png"));
@@ -87,13 +94,13 @@ public class Player extends Entity
        update(x,y, xgrav, ygrav, xm, ym, hp, FHP,maxx, maxy,maxxm,maxym,scale); 
     }
     
-    public Player(double[] corners)
+    public Player()
     {
-        super(corners);
+        super();
         init_param();
         init_images();
         animationTimer = 0;
-        this.animationFull = animationFull;
+        this.animationFull = 9;
         this.img = IdleAn.get(0);
         this.HB = new HitBox(new double[] {});
         this.AnimationState = 0;
@@ -136,20 +143,6 @@ public class Player extends Entity
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-<<<<<<< HEAD
-            //this.Physics.addtoXM(-2.0);
-            this.x += 5;
-            System.out.println("LEFT");
-            System.out.println(this.x);
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            //this.Physics.addtoXM(2.0);
-            this.x -= 5;
-            System.out.println("RIGHT");
-            System.out.println(this.x);
-        }
-=======
             Physics.changeMomentum(-1.0,0.0);
         }
 
@@ -164,11 +157,15 @@ public class Player extends Entity
         if (key == KeyEvent.VK_DOWN) {
             Physics.changeMomentum(0.0,1.0);
         }
->>>>>>> c3df2921bbb30af0f49a40ada7f83b34998384d3
     }
 
     public void keyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         
+    }
+    
+    public void setAnimationImage()
+    {
+        this.changeImg(IdleAn.get(animationTimer));
     }
 }

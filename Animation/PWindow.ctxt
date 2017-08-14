@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=PWindow
-comment0.text=\n\ A\ Jframe\ that\ is\ the\ Window\n\ It\ does\ the\ basic\ Window\ stuff\n\ \n\ @author\ Comerstar\n\ @version\ v0.1\n
+comment0.text=\r\n\ A\ Jframe\ that\ is\ the\ Window\r\n\ It\ does\ the\ basic\ Window\ stuff\r\n\ \r\n\ @author\ Comerstar\r\n\ @version\ v0.1\r\n
 comment1.params=
 comment1.target=PWindow()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Window\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Window\r\n
 comment2.params=
 comment2.target=void\ init()
-comment2.text=\n\ Initializes\ the\ settings\ for\ the\ window\n
+comment2.text=\r\n\ Initializes\ the\ settings\ for\ the\ window\r\n
 comment3.params=args
 comment3.target=void\ main(java.lang.String[])
-comment3.text=\n\ Creates\ a\ window\ and\ ensures\ it\ is\ visible\n
+comment3.text=\r\n\ Creates\ a\ window\ and\ ensures\ it\ is\ visible\r\n
 numComments=4

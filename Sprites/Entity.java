@@ -14,9 +14,9 @@ public class Entity extends HitBox
     protected int fullHP;
     protected PhysicsEngine Physics;
     
-    public Entity(double[] corners)
+    public Entity()
     {
-        super(corners);
+        super();
     }
     
     public void update(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, 

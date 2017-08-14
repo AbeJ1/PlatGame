@@ -87,10 +87,10 @@ public class GamePanel extends JPanel implements Runnable
             }
             playerA.updateState();
             tileA.Collide(playerA);
-            if (tileA.testCollide(playerA))
-            {
-                break;
-            }
+            //if (tileA.testCollide(playerA))
+            //{
+                //break;
+            //}
             repaint();
             beforeTime = System.currentTimeMillis();
             playerA.increaseAT();

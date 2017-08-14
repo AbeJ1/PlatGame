@@ -254,20 +254,24 @@ public class HitBox extends Sprite
                             double m2 = (y3 - y2)/(x3 - x2);
                             x = (y0 - y2 + m2*x2 - m*x0)/(m2 - m);
                             y = (m*y2 - m2*y0 + m*m2*x0 - m*m2*x2)/(m - m2);
- 
                         }
                         boolean[] fails = PointInFail(x,y);
                         boolean failedv = true;
                         for (int k = 0; k < fails.length; k++)
                         {
-                            if((!fails[k]) || k == j)
+                            System.out.print("k: ");
+                            System.out.println(k);
+                            System.out.print("j: ");
+                            System.out.println(j);
+                            if(!fails[k] && k != j)
                             {
+                                System.out.println(fails[k]);
                                 failedv = false;
                                 System.out.println("kfail");
                                 break;
                             }
                         }
-                        if (true)
+                        if (failedv)
                         {
                             hbx = HB.absx(i);
                             hby = HB.absy(i);
@@ -306,7 +310,7 @@ public class HitBox extends Sprite
                             boolean failedu = true;
                             for (int n = 0; n < fails.length; n++)
                             {
-                                if((!fails2[n]) || n == j)
+                                if((!fails2[n]) && !(n == j))
                                 {
                                     failedu = false;
                                 }                                
