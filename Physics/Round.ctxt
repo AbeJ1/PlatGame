@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Round
+comment0.text=\r\n\ has\ various\ rounding\ functions\r\n\r\n\ @author\ Comerstar\r\n\ @version\ v0.1\r\n
+comment1.params=
+comment1.target=Round()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Round\r\n
+comment2.params=x\ p
+comment2.target=double\ round(double,\ int)
+comment2.text=\r\n\ returns\ x\ rounded\ to\ p\ decimal\ places\r\n\r\n\ @param\ \ x,\ the\ value\ to\ be\ rounded\r\n\ @param\ p,\ how\ many\ decimal\ places\ to\ round\ to\r\n\ @return\ the\ rounded\ x\ value\r\n
+numComments=3

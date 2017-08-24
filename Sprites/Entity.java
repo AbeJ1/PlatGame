@@ -12,7 +12,6 @@ public class Entity extends HitBox
 {
     protected int health;
     protected int fullHP;
-    protected PhysicsEngine Physics;
     
     public Entity()
     {
@@ -121,5 +120,11 @@ public class Entity extends HitBox
         oldy = y;
         x += Physics.getXMomentum();
         y += Physics.getYMomentum();
+        AT.setToTranslation(this.x - AR.getTranslateX(),this.y - AR.getTranslateY());
+        //AT.translate(this.x - AT.getTranslateX(),this.y - AT.getTranslateY());
+        // System.out.print("x - AT.getTranslateX(): ");
+        // System.out.println(x - AT.getTranslateX());
+        // System.out.print("y - AT.getTranslateY(): ");
+        // System.out.println(y - AT.getTranslateY());
     }
 }

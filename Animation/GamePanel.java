@@ -18,6 +18,15 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
+import java.io.FileReader;
+import java.net.URL;
+import java.awt.geom.AffineTransform;
+import Physics.RotationTransform;
+
 
 /**
  * A GamePanel
@@ -40,6 +49,9 @@ public class GamePanel extends JPanel implements Runnable
     
     private Player playerA;
     private Tile tileA;
+    private Tile tileB;
+    private Image img;
+    private AffineTransform AT;
     
     /**
      * Constructor for objects of class GamePanel
@@ -50,17 +62,56 @@ public class GamePanel extends JPanel implements Runnable
         addKeyListener(new TAdapter());
         setFocusable(true);
         this.b = new Background(0,0,"Resources/Swords.png",0,0,0,5);
+        //jsonTest();
         gameInit();
+    }
+    
+    public void jsonTest()
+    {
+        JSONParser parser = new JSONParser();
+        try
+        {
+            FileReader FD = new FileReader("Resources/testdata");
+            Object obj = parser.parse(FD);
+            JSONObject jsonObject = (JSONObject) obj;
+            JSONArray playerdata = (JSONArray) jsonObject.get("player");
+            JSONArray tiledata = (JSONArray) jsonObject.get("tile");
+            Iterator<Double> iterator = playerdata.iterator();
+            while (iterator.hasNext()){
+                System.out.println(iterator.next());
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
     
     public void gameInit() {
         playerA = new Player();
-        tileA = new Tile(100, 0,1);
-        
+        tileA = new Tile(100, 100,1,1);
+        tileB = new Tile(200, 100,1,2);
+        //playerA.updateHitbox(new double[]{0,0,0,50,30,50,30,0});
         if (animator == null ){
             animator = new Thread(this);
             animator.start();
         }
+    }
+    
+    /**
+     * changes the image to a given URL. It has to load the image
+     * 
+     * @param URL the URL of the image
+     */
+    public Image getImgfromURL(String URL)
+    {
+        URL imgURL = getClass().getClassLoader().getResource(URL);
+        ImageIcon icon = null;
+        if(imgURL != null)
+        {
+            icon = new ImageIcon(imgURL);
+        } else {
+            System.err.println("Couldn't find file:" + URL);
+        }
+        return icon.getImage();
     }
     
     @Override
@@ -68,14 +119,25 @@ public class GamePanel extends JPanel implements Runnable
         long beforeTime, timeDiff, sleep;
         playing = true;
         state = 0;
+        img = getImgfromURL("Resources/Wood Diagonal BR.png");
+        AT = new AffineTransform();
         //states
         //0 Menu
         //1 Level
         //2 World
         beforeTime = System.currentTimeMillis();
+        AT.rotate(Math.toRadians(45),50,50);
+        AT.translate(100,0);
+        //AT.rotate(Math.toRadians(45),50,50);
+        double tx = 0;
+        double ty = 0;
         while (playing) {
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;
+            int collides = 5;
+            //AT.translate(100,0);
+            
+            //AT.translate(100,0);
             if (sleep < 0) {
                 sleep = 2;
             }
@@ -86,11 +148,23 @@ public class GamePanel extends JPanel implements Runnable
                 System.out.println("interrupted");
             }
             playerA.updateState();
+            //playerA.updateHitbox(new double[]{0,0,0,50,30,50,30,0});
             tileA.Collide(playerA);
-            //if (tileA.testCollide(playerA))
-            //{
-                //break;
-            //}
+            tileB.Collide(playerA);
+            
+            // System.out.print("ATXR: ");
+            // System.out.println(AT.getTranslateX());
+            // System.out.print("ATYR: ");
+            // System.out.println(AT.getTranslateY());
+            double[] theta = RotationTransform.rotation_angle(0,1,1/Math.sqrt(2),1/Math.sqrt(2));
+            double[] results = RotationTransform.rotate(tx,ty,50,50,theta);
+            //System.out.print("results[0]: ");
+            //System.out.println(results[0]);
+            //System.out.print("results[1]: ");
+            //System.out.println(results[1]);
+            tx = results[0];
+            ty = results[1];
+            
             repaint();
             beforeTime = System.currentTimeMillis();
             playerA.increaseAT();
@@ -106,9 +180,16 @@ public class GamePanel extends JPanel implements Runnable
         g.setColor(Color.black);
         g.fillRect(0, 0, getSize().width, getSize().height);
         try{
+            Graphics2D g2 = (Graphics2D) g;
             drawBackground(g);
-            playerA.draw(g,1);
+            playerA.drawAT(g2,1);
+            //System.out.print("xm: ");
+            //System.out.println(playerA.getPhysics().getXMomentum());
+            //System.out.print("ym: ");
+            //System.out.println(playerA.getPhysics().getYMomentum());
             tileA.draw(g,1);
+            tileB.draw(g,1);
+            g2.drawImage(img,AT,null);
         }
         catch(Exception e)
         {

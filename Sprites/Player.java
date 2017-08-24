@@ -18,7 +18,6 @@ public class Player extends Entity
     private ArrayList <Image> AttAn;//attacking animation
     private ArrayList <Image> FlyAn;//flying animation
     private ArrayList <Image> DieAn;//dying animation
-    private HitBox HB;
     private int animationTimer;//where in the animation the player is in
     private int animationFull;//the point in which the animation restarts
     private int state;//the current state of the player e.g. in ninja power up
@@ -43,7 +42,6 @@ public class Player extends Entity
        IdleAn.add(getImgfromURL("Resources/ASS2.png"));
        IdleAn.add(getImgfromURL("Resources/ASS3.png"));
        IdleAn.add(getImgfromURL("Resources/ASS4.png"));
-       IdleAn.add(getImgfromURL("Resources/ASS5.png"));
        IdleAn.add(getImgfromURL("Resources/ASS4.png"));
        IdleAn.add(getImgfromURL("Resources/ASS3.png"));
        IdleAn.add(getImgfromURL("Resources/ASS2.png"));
@@ -58,7 +56,7 @@ public class Player extends Entity
        DieAn.add(getImgfromURL("Resources/ASS2.png"));
        double h = IdleAn.get(0).getHeight(null);
        double w = IdleAn.get(0).getWidth(null);
-       updateHitbox(new double[]{0,0,0,h,h,w,w,0});
+       updateHitbox(new double[]{0,0,0,h,w,h,w,0});
     }
     
     /**
@@ -90,7 +88,7 @@ public class Player extends Entity
        double maxy = 500.0;
        double maxxm = 10.0;
        double maxym = 10.0;
-       double scale = 5.0;
+       double scale = 1.0;
        update(x,y, xgrav, ygrav, xm, ym, hp, FHP,maxx, maxy,maxxm,maxym,scale); 
     }
     
@@ -100,9 +98,8 @@ public class Player extends Entity
         init_param();
         init_images();
         animationTimer = 0;
-        this.animationFull = 9;
+        this.animationFull = 8;
         this.img = IdleAn.get(0);
-        this.HB = new HitBox(new double[] {});
         this.AnimationState = 0;
     }
     

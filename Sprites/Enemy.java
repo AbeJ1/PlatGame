@@ -30,7 +30,7 @@ public class Enemy extends Entity
     public void update(String s,double x,double y, double xgrav, double ygrav, double xm, double ym, int hp, int FHP,
     double maxxm, double maxym, int animationFull,double scale,String JSONURL)
     {
-        update(s,x,y, xgrav, ygrav, xm, ym, hp, FHP,maxxm,maxym,scale);
+        //update(s,x,y, xgrav, ygrav, xm, ym, hp, FHP,maxxm,maxym,scale);
         this.animationFull = animationFull;
         animationTimer = 0;
     }
